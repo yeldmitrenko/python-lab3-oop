@@ -16,7 +16,7 @@ To run in console:
 - Go into folder
 - Type "python main.py"
 
-#Python_Lab_3
+#Python_Lab_4
 
 - Write tests to lab 3
 - Tests coverage should be 70%
