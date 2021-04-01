@@ -8,25 +8,26 @@ from models.enum_sort_order import SortOrder
 class TestEquipmentManager(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.equipment = [
-            Scenery(2, 56, 28, FilmType.HISTORICAL)
-        ]
+        self.equipment_1 = Scenery(2, 56, 28, FilmType.HISTORICAL)
+        self.equipment_2 = Scenery(3, 12, 3, FilmType.DOCUMENTARY)
+        self.equipment = [self.equipment_1, self.equipment_2]
+
         self.manager = EquipmentManager()
         self.manager.add_equipment(self.equipment)
 
     def test_search_by_film_type(self):
         self.assertEqual(
-            self.manager.search_by_film_type(FilmType.HISTORICAL), self.equipment
+            self.manager.search_by_film_type(FilmType.HISTORICAL), [self.equipment_1]
         )
 
     def test_sort_by_price(self):
         self.assertEqual(
-           self.manager.sort_by_price(SortOrder.ASC), self.equipment
+           self.manager.sort_by_price(SortOrder.ASC), [self.equipment_2, self.equipment_1]
         )
 
     def test_sort_by_installation_time(self):
         self.assertEqual(
-            self.manager.sort_by_installation_time(SortOrder.ASC), self.equipment
+            self.manager.sort_by_installation_time(SortOrder.ASC), [self.equipment_2, self.equipment_1]
         )
 
 
